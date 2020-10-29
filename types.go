@@ -156,10 +156,7 @@ func (l *Listing) ToBytes(c *Curday) []byte {
 
 	// {str(timeslot)}\x001\x0034\x000\x000\x00{name}\x00
 	ts := int(l.Timeslot)
-
-	if c.Timezone != 4 {
-		ts -= (c.Timezone - 4) * 2
-	}
+	ts -= (c.Timezone - 4) * 2
 
 	if ts > 48 {
 		ts -= 48
