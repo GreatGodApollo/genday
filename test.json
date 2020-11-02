@@ -1,0 +1,112 @@
+{
+  "settings": "AE3366N",
+  "timezone": 6,
+  "dst": false,
+  "city": "Madison",
+  "airport": "MSN",
+  "channels": [
+    {
+      "number": 1,
+      "id": "TST001",
+      "callsign": "TST",
+      "listings": [
+        {
+          "time": "00:00",
+          "name": "Midnight"
+        },
+        {
+          "time": "01:00",
+          "name": "One AM"
+        },
+        {
+          "time": "02:00",
+          "name": "Two AM"
+        },
+        {
+          "time": "03:00",
+          "name": "Three AM"
+        },
+        {
+          "time": "04:00",
+          "name": "Four AM"
+        },
+        {
+          "time": "05:00",
+          "name": "Five AM"
+        },
+        {
+          "time": "06:00",
+          "name": "Six AM"
+        },
+        {
+          "time": "07:00",
+          "name": "Seven AM"
+        },
+        {
+          "time": "08:00",
+          "name": "Eight AM"
+        },
+        {
+          "time": "09:00",
+          "name": "Nine AM"
+        },
+        {
+          "time": "10:00",
+          "name": "Ten AM"
+        },
+        {
+          "time": "11:00",
+          "name": "Eleven AM"
+        },
+        {
+          "time": "12:00",
+          "name": "Noon"
+        },
+        {
+          "time": "13:00",
+          "name": "One PM"
+        },
+        {
+          "time": "14:00",
+          "name": "Two PM"
+        },
+        {
+          "time": "15:00",
+          "name": "Three PM"
+        },
+        {
+          "time": "16:00",
+          "name": "Four PM"
+        },
+        {
+          "time": "17:00",
+          "name": "Five PM"
+        },
+        {
+          "time": "18:00",
+          "name": "Six PM"
+        },
+        {
+          "time": "19:00",
+          "name": "Seven PM"
+        },
+        {
+          "time": "20:00",
+          "name": "Eight PM"
+        },
+        {
+          "time": "21:00",
+          "name": "Nine PM"
+        },
+        {
+          "time": "22:00",
+          "name": "Ten PM"
+        },
+        {
+          "time": "23:00",
+          "name": "Eleven PM"
+        }
+      ]
+    }
+  ]
+}

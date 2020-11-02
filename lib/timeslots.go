@@ -1,10 +1,17 @@
-package main
+package genday
 
 type Timeslot int
 
 const (
 
 	_ Timeslot = iota
+
+	TimeSlotTwelveAM
+	TimeSlotTwelveThirtyAM
+	TimeSlotOneAM
+	TimeSlotOneThirtyAM
+	TimeSlotTwoAM
+	TimeSlotTwoThirtyAM
 	TimeSlotThreeAM
 	TimeSlotThreeThirtyAM
 	TimeSlotFourAM
@@ -47,11 +54,5 @@ const (
 	TimeSlotTenThirtyPM
 	TimeSlotElevenPM
 	TimeSlotElevenThirtyPM
-	TimeSlotTwelveAM
-	TimeSlotTwelveThirtyAM
-	TimeSlotOneAM
-	TimeSlotOneThirtyAM
-	TimeSlotTwoAM
-	TimeSlotTwoThirtyAM
 
 )

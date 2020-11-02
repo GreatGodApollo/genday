@@ -116,6 +116,7 @@ modules.xml
 
 # Ignore a built curday
 /test.dat
+/curday.dat
 
 # Ignore built linux
 /genday
