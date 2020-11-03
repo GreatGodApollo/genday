@@ -17,12 +17,9 @@ func NewListing(timeslot Timeslot, name string) *Listing {
 	}
 }
 
-func (l *Listing) ToBytes(c *Curday) []byte {
-	var out bytes.Buffer
-
-	// {str(timeslot)}\x001\x0034\x000\x000\x00{name}\x00
+func (l *Listing) ZoneCorrectedSlot(timezone int) int {
 	ts := int(l.Timeslot)
-	ts -= (c.Timezone - 1) * 2
+	ts -= (timezone - 1) * 2
 
 	if ts > 48 {
 		ts -= 48
@@ -30,7 +27,15 @@ func (l *Listing) ToBytes(c *Curday) []byte {
 		ts += 48
 	}
 
-	out.WriteString(fmt.Sprintf("%d", ts))
+	return ts
+}
+
+func (l *Listing) ToBytes(c *Curday) []byte {
+	var out bytes.Buffer
+
+	// {str(timeslot)}\x001\x0034\x000\x000\x00{name}\x00
+
+	out.WriteString(fmt.Sprintf("%d", l.ZoneCorrectedSlot(c.Timezone)))
 	out.WriteByte(0x00)
 	out.WriteString("1")
 	out.WriteByte(0x00)

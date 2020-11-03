@@ -3,6 +3,7 @@ package genday
 import (
 	"bytes"
 	"fmt"
+	"sort"
 	"time"
 )
 
@@ -70,8 +71,15 @@ func (c *Curday) ToBytes() []byte {
 
 	out.Write(c.Header())
 
+	sort.SliceStable(c.Channels, func(p, q int) bool {
+		return c.Channels[p].Channel < c.Channels[q].Channel
+	})
+
 	for _, channel := range c.Channels {
 		out.Write(channel.ToBytes())
+		sort.SliceStable(channel.Listings, func(p, q int) bool {
+			return channel.Listings[p].ZoneCorrectedSlot(c.Timezone) < channel.Listings[q].ZoneCorrectedSlot(c.Timezone)
+		})
 		for _, listing := range channel.Listings {
 			out.Write(listing.ToBytes(c))
 		}

@@ -10,9 +10,11 @@ var verbose *bool
 func Exec() {
 	app := cli.App("genday", "Generate a curday.dat file")
 
-	app.Spec = "[-v]"
+	app.Spec = "[--version] [--verbose]"
 
-	verbose = app.BoolOpt("v verbose", false, "Verbose debug mode")
+	app.Version("v version", "genday " + VERSION)
+
+	verbose = app.BoolOpt("V verbose", false, "Verbose debug mode")
 
 	app.Command("json", "generate a file from JSON", cmdJSON)
 
