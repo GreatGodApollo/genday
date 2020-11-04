@@ -56,7 +56,19 @@ func cmdJSON(cmd *cli.Cmd) {
 				}
 				curListings = append(curListings, genday.NewListing(ts, listing.Name))
 			}
-			c := genday.NewChannel(channel.Number, channel.ID, channel.Callsign)
+
+			var cf genday.ChannelFlags
+			if channel.Hilite {
+				cf = cf.Set(genday.ChannelFlagHiliteSrc)
+			}
+			if channel.AltHilite {
+				cf = cf.Set(genday.ChannelFlagAltHiliteSrc)
+			}
+			if channel.Summary {
+				cf = cf.Set(genday.ChannelFlagSumbySrc)
+			}
+
+			c := genday.NewChannel(channel.Number, channel.ID, channel.Callsign, cf)
 			for _, l := range curListings {
 				c.AddListing(l)
 			}

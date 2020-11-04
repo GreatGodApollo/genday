@@ -9,6 +9,9 @@
       "number": 1,
       "id": "TST001",
       "callsign": "TST",
+      "hilite": false,
+      "althilite": false,
+      "summary": false,
       "listings": [
         {
           "time": "00:00",

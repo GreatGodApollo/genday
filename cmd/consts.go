@@ -1,3 +1,3 @@
 package cmd
 
-const VERSION string = "0.2.0"
+const VERSION string = "0.3.0"

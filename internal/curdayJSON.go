@@ -28,10 +28,13 @@ type CurdayJSON struct {
 }
 
 type Channel struct {
-	Number   int       `json:"number"`
-	ID       string    `json:"id"`
-	Callsign string    `json:"callsign"`
-	Listings []Listing `json:"listings"`
+	Number    int       `json:"number"`
+	ID        string    `json:"id"`
+	Callsign  string    `json:"callsign"`
+	Listings  []Listing `json:"listings"`
+	Summary   bool      `json:"summary"`
+	Hilite    bool      `json:"hilite"`
+	AltHilite bool      `json:"althilite"`
 }
 
 type Listing struct {
