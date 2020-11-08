@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/GreatGodApollo/genday/internal"
 	genday "github.com/GreatGodApollo/genday/lib"
+	"github.com/fatih/color"
 	cli "github.com/jawher/mow.cli"
-	"github.com/ttacon/chalk"
 	"io/ioutil"
 )
 
@@ -20,20 +20,20 @@ func cmdJSON(cmd *cli.Cmd) {
 		v := *verbose
 
 		if v {
-			fmt.Println(internal.NewMessage(chalk.Yellow, "Opening file"))
+			fmt.Println(internal.NewMessage(color.FgCyan, "Opening file"))
 		}
 		data, err := ioutil.ReadFile(*inputFile)
 		if err != nil {
-			fmt.Println(internal.NewMessage(chalk.Red, "Failed to read file:").ThenColor(chalk.Yellow, "\n" + err.Error()))
+			fmt.Println(internal.NewMessage(color.FgRed, "Failed to read file:").ThenColor(color.FgYellow, "\n" + err.Error()))
 			return
 		}
 
 		if v {
-			fmt.Println(internal.NewMessage(chalk.Yellow, "Decoding JSON"))
+			fmt.Println(internal.NewMessage(color.FgYellow, "Decoding JSON"))
 		}
 		curdayJSON, err := internal.UnmarshalCurdayJSON(data)
 		if err != nil {
-			fmt.Println(internal.NewMessage(chalk.Red, "Failed to decode JSON:").ThenColor(chalk.Yellow, "\n" + err.Error()))
+			fmt.Println(internal.NewMessage(color.FgRed, "Failed to decode JSON:").ThenColor(color.FgYellow, "\n" + err.Error()))
 			return
 		}
 
@@ -42,16 +42,16 @@ func cmdJSON(cmd *cli.Cmd) {
 
 		for _, channel := range curdayJSON.Channels {
 			if v {
-				fmt.Println(internal.NewMessage(chalk.Yellow, "Generating " + channel.Callsign))
+				fmt.Println(internal.NewMessage(color.FgYellow, "Generating " + channel.Callsign))
 			}
 			var curListings []*genday.Listing
 			for _, listing := range channel.Listings {
 				if v {
-					fmt.Println(internal.NewMessage(chalk.Yellow, " - "+listing.Name))
+					fmt.Println(internal.NewMessage(color.FgYellow, " - "+listing.Name))
 				}
 				ts, err := internal.NearestTimeslot(listing.Time)
 				if err != nil {
-					fmt.Println(internal.NewMessage(chalk.Red, fmt.Sprintf("Invalid time: Channel: %s Listing: %s Time: %s", channel.Callsign, listing.Name, listing.Time)))
+					fmt.Println(internal.NewMessage(color.FgRed, fmt.Sprintf("Invalid time: Channel: %s Listing: %s Time: %s", channel.Callsign, listing.Name, listing.Time)))
 					continue
 				}
 				curListings = append(curListings, genday.NewListing(ts, listing.Name))
@@ -75,14 +75,14 @@ func cmdJSON(cmd *cli.Cmd) {
 			curday.AddChannel(c)
 		}
 		if v {
-			fmt.Println(internal.NewMessage(chalk.Yellow, "Saving to \"" + *outputFile + "\""))
+			fmt.Println(internal.NewMessage(color.FgYellow, "Saving to \"" + *outputFile + "\""))
 		}
 		err = internal.SaveCurday(*outputFile, curday)
 		if err != nil {
-			fmt.Println(internal.NewMessage(chalk.Red, "Failed to save to").ThenColor(chalk.Yellow, *outputFile).ThenColor(chalk.Red, "\n" + err.Error()))
+			fmt.Println(internal.NewMessage(color.FgRed, "Failed to save to").ThenColor(color.FgYellow, *outputFile).ThenColor(color.FgRed, "\n" + err.Error()))
 		} else {
-			fmt.Println(internal.NewMessage(chalk.Green, "Successfully saved to").ThenColor(chalk.Yellow, *outputFile))
-			fmt.Println(internal.NewMessage(chalk.Yellow, fmt.Sprintf("Generated %d listings", curday.ListingCount())))
+			fmt.Println(internal.NewMessage(color.FgGreen, "Successfully saved to").ThenColor(color.FgYellow, *outputFile))
+			fmt.Println(internal.NewMessage(color.FgYellow, fmt.Sprintf("Generated %d listings", curday.ListingCount())))
 		}
 	}
 }

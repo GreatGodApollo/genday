@@ -1,29 +1,26 @@
 package internal
 
-import "github.com/ttacon/chalk"
+import (
+	"github.com/fatih/color"
+)
 
 type Message struct {
 	message string
 }
 
-func NewMessage(color chalk.Color, message string) *Message {
+func NewMessage(col color.Attribute, message string) *Message {
 	return &Message{
-		message: chalk.Cyan.Color("[GD] ") + color.Color(message),
+		message: color.CyanString("[GD] ") + color.New(col).Sprint(message),
 	}
 }
 
-func (msg *Message) ThenColor(color chalk.Color, message string) *Message {
-	msg.message = msg.message + " " + color.Color(message)
+func (msg *Message) ThenColor(col color.Attribute, message string) *Message {
+	msg.message += " " + color.New(col).Sprint(message)
 	return msg
 }
 
-func (msg *Message) ThenStyle(style chalk.TextStyle, message string) *Message {
-	msg.message = msg.message + " " + style.TextStyle(message)
-	return msg
-}
-
-func (msg *Message) ThenColorStyle(color chalk.Color, style chalk.TextStyle, message string) *Message {
-	msg.message = msg.message + " " + color.Color(style.TextStyle(message))
+func (msg *Message) ThenColorStyle(col color.Attribute, style color.Attribute, message string) *Message {
+	msg.message += " " + color.New(col).Add(style).Sprint(message)
 	return msg
 }
 
