@@ -23,12 +23,15 @@
     Run 'genday COMMAND --help' for more information on a command.
 ```
 
+## Bugs & Feature Requests
+As you may have noticed, this repo has issues disabled, that's because everything is over on my bug
+portal @ [pm.brettb.xyz](https://pm.brettb.xyz). You can browse around without an account, but you
+do need to make one in order to file anything.
 
 ## Built With
 
 - [ttacon/chalk](github.com/ttacon/chalk)
 - [jawher/mow.cli](github.com/jawher/mow.cli)
-
 
 ## Licensing
 
@@ -36,4 +39,4 @@ This project is licensed under the [MIT License](https://choosealicense.com/lice
 
 ## Authors
 
-* [Brett Bender](https://github.com/GreatGodApollo)
+- [Brett Bender](https://github.com/GreatGodApollo)
