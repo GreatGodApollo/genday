@@ -52,7 +52,7 @@ do need to make one in order to file anything.
 
 ## Built With
 
-- [fatih/color](https://github.com/ttacon/chalk)
+- [fatih/color](https://github.com/fatih/color)
 - [jawher/mow.cli](https://github.com/jawher/mow.cli)
 
 ## Licensing
